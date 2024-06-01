@@ -1,0 +1,56 @@
+package com.rays.ctl;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.bind.BindResult;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.rays.common.BaseCtl;
+import com.rays.common.ORSResponse;
+import com.rays.dao.AttachmentDAO;
+import com.rays.dao.DoctorDAO;
+import com.rays.dto.DoctorDTO;
+import com.rays.form.DoctorForm;
+import com.rays.service.AttachmentService;
+import com.rays.service.DoctorService;
+
+@RestController
+@RequestMapping(value="Doctor")
+public class DoctorCtl extends BaseCtl {
+	@Autowired
+	public DoctorService doctorService;
+	@Autowired
+	public AttachmentService attachmentService;
+	
+	@PostMapping("save")
+	public ORSResponse save(@RequestBody @Valid DoctorForm form,BindingResult bindingResult) {
+		ORSResponse res=validate(bindingResult);
+		if(!res.isSucess()){
+		 
+	return res;
+		}
+		DoctorDTO dto=(DoctorDTO) form.getDTO();
+		
+		if(dto.getId()!=null&& dto.getId()>0) {
+			doctorService.update(dto);
+			res.addData(dto.getId());
+			res.addMessage("Data Successfully Update");
+			
+			}else {
+				Long  pk=doctorService.add(dto);
+				res.addData(pk);
+				res.addMessage("Data Successfully Added");
+				
+			}
+	
+	 return res;
+	}
+	
+	
+
+}

@@ -1,0 +1,38 @@
+package com.rays.dto;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import com.rays.common.BaseDTO;
+
+@Entity
+@Table(name = "ST_DOCTOR")
+public class DoctorDTO extends BaseDTO {
+	@Column(name="DOCTOR_NAME" ,length=50)
+	private String doctorName;
+	
+	@Column(name="MOBILE_NUMBER",length=50)
+	private String mobileNumber;
+	
+	@Column(name="Expertise",length=50)
+	private String expertise;
+	
+	@Column(name="DOB")
+	private Date dob;
+	
+	
+	@Column(name="IMAGE_ID")
+	private Long  imageId;
+
+	@Override
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return expertise;
+	}
+	
+	
+
+}

@@ -1,0 +1,2 @@
+2024-06-01 17:59:59,683 0      [lcome Dashboard] WARN  re.templates.TemplateProcessor  - May have failed to replace token 		//window.ide 'dummy'. Replaced/injected later by STS browser integration.
+2024-06-01 17:59:59,729 46     [lcome Dashboard] WARN  re.templates.TemplateProcessor  - May have failed to replace token 		//The dummy helps preview/test the page in an external browser.

@@ -1,0 +1,25 @@
+package com.rays.form;
+
+import java.util.Date;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import com.rays.common.BaseForm;
+
+public class DoctorForm extends BaseForm {
+	
+	@NotEmpty(message="doctorName is required")
+	private String doctorName;
+	
+	@NotEmpty(message="mobileNumber is required")
+	private String mobileNumber;
+	
+	
+	@NotEmpty(message="expertise is required")
+	private String expertise;
+	
+	@NotNull(message="dob is required")
+	private Date dob;
+
+}

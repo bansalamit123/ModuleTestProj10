@@ -1,0 +1,10 @@
+package com.rays.dto;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ST_DOCTOR")
+public class DoctorDTO {
+
+}

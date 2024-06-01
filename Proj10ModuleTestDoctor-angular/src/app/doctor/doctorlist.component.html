@@ -1,0 +1,39 @@
+
+<h2>{{form.message}}</h2>
+<table>
+    <tr>
+         <td><select name="id" [(ngModel)]="form.searchParams.expertise">
+            <option [ngValue]="" value="undefined">{{'----Select User---'}}</option>
+            <option *ngFor="let obj of form.preload.doctorList" [value]="obj.value">{{obj.value}}</option>
+        </select></td>
+
+        <button (click)="search()">Search</button>
+        <button (click)="delete()">Delete</button>      
+    </tr>
+</table>
+
+<table border="1" width="100%">
+    <tr>
+        <th>Select</th>
+        <th>S.No</th>
+        <th>Image</th>
+        <th>DoctorName</th>
+        <th>MobileNumber</th>
+        <th>Expertise</th>
+        <th>DATE</th>
+        <th>Edit</th>
+    </tr>
+
+    <tr *ngFor="let m of form.list">
+        <td><input type="checkbox" (change)="onCheckboxChange(m.id)"/></td>
+        <td>{{m.id}}</td>
+        <td><img src="http://localhost:8080/Doctor/profilePic/{{m.id}}" height="55px" width="80px"></td>
+        <td>{{m.doctorName}}</td>
+        <td>{{m.mobileNumber}}</td>
+        <td>{{m.expertise}}</td>
+        <td>{{m.dob}}</td>
+       
+        <td><a (click)="edit('/doctor/'+m.id)" style="color:blue;">edit</a></td>
+        </tr>
+    </table><br>
+       
